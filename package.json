@@ -4,7 +4,8 @@
   "description": "Aplikasi Point of Sale berbasis web",
   "scripts": {
     "build:css": "tailwindcss -i ./css/input.css -o ./css/style.css --watch",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -19,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=18"
+    "node": "18.x",
+    "npm": "9.x"
   }
 }

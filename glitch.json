@@ -1,6 +1,6 @@
 {
-  "install": "npm install",
-  "start": "node server.js",
+  "install": "npm install --legacy-peer-deps",
+  "start": "npm start",
   "watch": {
     "ignore": [
       ".git",
