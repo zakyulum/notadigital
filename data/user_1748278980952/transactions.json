@@ -1,0 +1,46 @@
+[
+  {
+    "invoiceNumber": "INV-1",
+    "customerName": "zakyulum",
+    "customerPhone": "628816041702",
+    "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+    "items": [
+      {
+        "productId": "prod_007iwtr3qwfg",
+        "name": "Flashdisk",
+        "price": 35642,
+        "quantity": 1,
+        "subtotal": 35642
+      }
+    ],
+    "total": 35642,
+    "notes": "",
+    "date": "2025-05-26T18:04:19.011Z",
+    "status": "completed",
+    "id": "tr_1748282659020",
+    "userId": "user_1748278980952",
+    "filename": "invoice_zakyulum_1748282659020"
+  },
+  {
+    "invoiceNumber": "INV-2",
+    "customerName": "zakyulum",
+    "customerPhone": "628816041702",
+    "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+    "items": [
+      {
+        "productId": "prod_qeokd5jx6o",
+        "name": "Daging Sapi",
+        "price": 45300,
+        "quantity": 1,
+        "subtotal": 45300
+      }
+    ],
+    "total": 45300,
+    "notes": "",
+    "date": "2025-05-26T19:39:17.695Z",
+    "status": "completed",
+    "id": "tr_1748288357705",
+    "userId": "user_1748278980952",
+    "filename": "invoice_zakyulum_1748288357705"
+  }
+]

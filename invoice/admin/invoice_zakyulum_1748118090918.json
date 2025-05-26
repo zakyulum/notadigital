@@ -1,0 +1,29 @@
+{
+  "invoiceNumber": "INV-69",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcp0719",
+      "name": "Hand Sanitizer",
+      "price": 3888,
+      "quantity": 1,
+      "subtotal": 3888
+    },
+    {
+      "productId": "pmb0jhpgctdqvs",
+      "name": "Baterai AA",
+      "price": 47753,
+      "quantity": 1,
+      "subtotal": 47753
+    }
+  ],
+  "total": 51641,
+  "notes": "",
+  "date": "2025-05-24T20:21:30.918Z",
+  "status": "completed",
+  "id": "tr_1748118090918",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748118090918"
+}

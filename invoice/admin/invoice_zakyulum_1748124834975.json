@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-92",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgctdqvs",
+      "name": "Baterai AA",
+      "price": 47753,
+      "quantity": 1,
+      "subtotal": 47753
+    }
+  ],
+  "total": 47753,
+  "notes": "",
+  "date": "2025-05-24T22:13:54.948Z",
+  "status": "completed",
+  "id": "tr_1748124834975",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748124834975"
+}

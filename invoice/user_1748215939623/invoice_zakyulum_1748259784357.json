@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-2",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "prod_rfqe7it07g9",
+      "name": "Daging Sapi",
+      "price": 45300,
+      "quantity": 1,
+      "subtotal": 45300
+    }
+  ],
+  "total": 45300,
+  "notes": "",
+  "date": "2025-05-26T11:43:04.362Z",
+  "status": "completed",
+  "id": "tr_1748259784357",
+  "userId": "user_1748215939623",
+  "filename": "invoice_zakyulum_1748259784357"
+}

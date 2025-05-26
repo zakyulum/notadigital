@@ -1,0 +1,11 @@
+{
+  "storeName": "TOKO SERBA ADA",
+  "storeTagline": "jual sembako dan alat pancing",
+  "storeAddress": "Krajan 1, Gambiran, Kec. Tegalsari, Kabupaten Banyuwangi, Jawa Timur 68485",
+  "storePhone": "08816041702",
+  "storeEmail": "toko@example.com",
+  "storeFooter": "Terima kasih telah berbelanja di toko kami!",
+  "whatsappMessageTemplate": "Halo {{customerName}}, berikut adalah nota transaksi Anda dari {{storeName}}:\n\n{{notaLink}}\n\nTerima kasih!",
+  "paperLayout": "thermal80",
+  "storeLogo": "/uploads/admin/logo.png"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tmb0i8uhn6t4c5",
+  "date": "2025-05-23T07:54:21.659Z",
+  "invoiceNumber": "INV/0002",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0i8uhn7k59d",
+      "productId": "pmazuxd453wmz4",
+      "productName": "korek",
+      "price": 1111,
+      "quantity": 1,
+      "subtotal": 1111
+    },
+    {
+      "id": "imb0i8uhnygdli",
+      "productId": "pmb0i87njoejjj",
+      "productName": "laptop",
+      "price": 4000000,
+      "quantity": 1,
+      "subtotal": 4000000
+    }
+  ],
+  "total": 4001111,
+  "filename": "invoice_admin_mb0i8uhnsfkk9.json"
+}

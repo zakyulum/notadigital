@@ -1,0 +1,22 @@
+{
+  "id": "tmb0zjds9rslop",
+  "date": "2025-05-23T15:58:26.697Z",
+  "invoiceNumber": "INV/0002",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0zjdsag4m3p",
+      "productId": "pmb0zifsph2n01",
+      "productName": "Teh Celup",
+      "price": 11453,
+      "quantity": 1,
+      "subtotal": null
+    }
+  ],
+  "total": null,
+  "userId": "user_1748015808750",
+  "filename": "invoice_user_1748015808750_mb0zjdsanv.json"
+}

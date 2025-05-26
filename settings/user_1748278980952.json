@@ -1,0 +1,11 @@
+{
+  "storeName": "Toko Saya",
+  "storeTagline": "Jual Eceran Harga Grosir",
+  "storeAddress": "Jl. Contoh No. 123",
+  "storePhone": "08123456789",
+  "storeEmail": "toko@example.com",
+  "storeFooter": "Terima kasih telah berbelanja di toko kami!",
+  "whatsappMessageTemplate": "Halo {{customerName}}, berikut adalah nota transaksi Anda dari {{storeName}}:\n\n{{notaLink}}\n\nTerima kasih!",
+  "paperLayout": "thermal80",
+  "storeLogo": "/uploads/user_1748278980952/logo.png"
+}

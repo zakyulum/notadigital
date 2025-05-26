@@ -1,0 +1,22 @@
+{
+  "id": "tmb0zinz90ah19",
+  "date": "2025-05-23T15:57:53.253Z",
+  "invoiceNumber": "INV/0001",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0zinzalaga2",
+      "productId": "pmb0zifsp0eovg",
+      "productName": "Sabun Mandi",
+      "price": 29534,
+      "quantity": 1,
+      "subtotal": null
+    }
+  ],
+  "total": null,
+  "userId": "user_1748015808750",
+  "filename": "invoice_user_1748015808750_mb0zinzata.json"
+}

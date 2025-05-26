@@ -1,0 +1,37 @@
+{
+  "id": "tmb0jmu2kajf3x",
+  "date": "2025-05-23T08:33:13.916Z",
+  "invoiceNumber": "INV/0004",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0jmu2ktj3il",
+      "productId": "pmb0jhpgcqrb38",
+      "productName": "Beras",
+      "price": 48559,
+      "quantity": 1,
+      "subtotal": 48559
+    },
+    {
+      "id": "imb0jmu2ktoewo",
+      "productId": "pmb0jhpgcqp8d5",
+      "productName": "Kopi Bubuk",
+      "price": 24463,
+      "quantity": 2,
+      "subtotal": 48926
+    },
+    {
+      "id": "imb0jmu2k4jt79",
+      "productId": "pmb0jhpgcbl4yt",
+      "productName": "Kecap Manis",
+      "price": 40634,
+      "quantity": 1,
+      "subtotal": 40634
+    }
+  ],
+  "total": 138119,
+  "filename": "invoice_admin_mb0jmu2kpjylb.json"
+}

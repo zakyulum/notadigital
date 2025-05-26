@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-77",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcevseb",
+      "name": "Air Mineral",
+      "price": 33536,
+      "quantity": 1,
+      "subtotal": 33536
+    }
+  ],
+  "total": 33536,
+  "notes": "",
+  "date": "2025-05-24T20:47:50.604Z",
+  "status": "completed",
+  "id": "tr_1748119670613",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748119670613"
+}

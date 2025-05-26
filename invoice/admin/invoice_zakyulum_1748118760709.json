@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-74",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgc31eyh",
+      "name": "Vitamin C",
+      "price": 20888,
+      "quantity": 1,
+      "subtotal": 20888
+    }
+  ],
+  "total": 20888,
+  "notes": "",
+  "date": "2025-05-24T20:32:40.697Z",
+  "status": "completed",
+  "id": "tr_1748118760709",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748118760709"
+}

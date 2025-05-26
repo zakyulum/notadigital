@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-90",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcp0719",
+      "name": "Hand Sanitizer",
+      "price": 3888,
+      "quantity": 1,
+      "subtotal": 3888
+    }
+  ],
+  "total": 3888,
+  "notes": "",
+  "date": "2025-05-25T15:17:33.308Z",
+  "status": "completed",
+  "id": "tr_1748186253315",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748186253315"
+}

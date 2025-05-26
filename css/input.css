@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Toast Styles */
+/* Apply to the element with id="toast" */
+#toast {
+  position: fixed; /* Tetap di posisi yang sama saat scroll */
+  bottom: 20px; /* Jarak dari bawah viewport */
+  left: 50%; /* Pusatkan secara horizontal */
+  transform: translateX(-50%) translateY(100%); /* Awalnya tersembunyi di bawah viewport dan di tengah */
+
+  padding: 1rem; /* Tailwind: p-4 */
+  border-radius: 0.5rem; /* Tailwind: rounded-lg */
+  /* Warna background dan teks diatur oleh JavaScript menggunakan kelas Tailwind seperti bg-green-500, text-white */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind: shadow-lg */
+
+  z-index: 1000; /* Pastikan toast tampil di atas konten lain */
+
+  opacity: 0; /* Awalnya transparan */
+  visibility: hidden; /* Awalnya tersembunyi */
+
+  /* Transisi halus untuk muncul dan menghilang */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#toast.show {
+  opacity: 1; /* Jadi terlihat */
+  visibility: visible; /* Jadi bisa diinteraksi (jika ada) */
+  transform: translateX(-50%) translateY(0); /* Geser ke posisi normal di viewport */
+}

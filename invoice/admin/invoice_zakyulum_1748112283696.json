@@ -1,0 +1,29 @@
+{
+  "invoiceNumber": "INV-54",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcp0719",
+      "name": "Hand Sanitizer",
+      "price": 3888,
+      "quantity": 1,
+      "subtotal": 3888
+    },
+    {
+      "productId": "pmb0jhpgcibfc8",
+      "name": "Detergen Bubuk",
+      "price": 33832,
+      "quantity": 1,
+      "subtotal": 33832
+    }
+  ],
+  "total": 37720,
+  "notes": "",
+  "date": "2025-05-24T18:44:43.624Z",
+  "status": "completed",
+  "id": "tr_1748112283696",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748112283696"
+}

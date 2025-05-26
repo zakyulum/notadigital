@@ -1,0 +1,21 @@
+{
+  "id": "tmb0lk60ydv6jo",
+  "date": "2025-05-23T09:27:08.674Z",
+  "invoiceNumber": "INV/0008",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0lk60yakb1u",
+      "productId": "pmb0jhpgccv4u6",
+      "productName": "Minyak Goreng",
+      "price": 39667,
+      "quantity": 1,
+      "subtotal": 39667
+    }
+  ],
+  "total": 39667,
+  "filename": "invoice_admin_mb0lk60ylyiiv.json"
+}

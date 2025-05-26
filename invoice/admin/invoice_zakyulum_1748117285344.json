@@ -1,0 +1,29 @@
+{
+  "invoiceNumber": "INV-68",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.7 kali wates, jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcfvj9r",
+      "name": "Daging Sapi",
+      "price": 45300,
+      "quantity": 1,
+      "subtotal": 45300
+    },
+    {
+      "productId": "pmb0jhpgccjtu6",
+      "name": "Flashdisk",
+      "price": 35642,
+      "quantity": 1,
+      "subtotal": 35642
+    }
+  ],
+  "total": 80942,
+  "notes": "",
+  "date": "2025-05-24T20:08:05.337Z",
+  "status": "completed",
+  "id": "tr_1748117285344",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748117285344"
+}

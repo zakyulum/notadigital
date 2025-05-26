@@ -1,0 +1,27 @@
+{
+  "admin": {
+    "username": "admin",
+    "passwordHash": "$2b$10$k3IxgceMibQYgKfyzQaCFusfK2qg57ZEKvkiKIxKbSv4HVI1yqOq2",
+    "role": "admin"
+  },
+  "user_1748030936182": {
+    "username": "lubiz",
+    "passwordHash": "$2a$10$rVM4W/B1PELdH8IwfWww9.NCOvz5jo/QUcPmIFYIIB6zxCjcAJ41u",
+    "role": "user"
+  },
+  "user_1748215939623": {
+    "username": "aku",
+    "passwordHash": "$2b$10$b4TII1bckc02/4KEUEYJYeFom0VteG3nCixZeMH8/48KQT7EtTT56",
+    "role": "user"
+  },
+  "user_1748278980952": {
+    "username": "wahyu",
+    "passwordHash": "$2b$10$ECepPnXOY01krZ2nEHPFTepDh5DdOExUO7PV/XYqibOk47KzU/Jcq",
+    "role": "user"
+  },
+  "user_1748285478562": {
+    "username": "wahyu2",
+    "passwordHash": "$2b$10$GyozByj163r.q98rQvWKSOvd0lcAUcZwsqmfSRkd8OCQs.eLKBWFW",
+    "role": "user"
+  }
+}

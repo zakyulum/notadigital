@@ -1,0 +1,29 @@
+{
+  "invoiceNumber": "INV-102",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcp0719",
+      "name": "Hand Sanitizer",
+      "price": 3888,
+      "quantity": 5,
+      "subtotal": 19440
+    },
+    {
+      "productId": "pmb0jhpgc6erqn",
+      "name": "Jus Buah",
+      "price": 12687,
+      "quantity": 1,
+      "subtotal": 12687
+    }
+  ],
+  "total": 32127,
+  "notes": "",
+  "date": "2025-05-25T16:26:20.988Z",
+  "status": "completed",
+  "id": "tr_1748190380994",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748190380994"
+}

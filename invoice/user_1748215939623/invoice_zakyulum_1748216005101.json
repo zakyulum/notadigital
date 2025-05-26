@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-1",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "prod_38u0dxq7ngw",
+      "name": "Ayam Potong",
+      "price": 26889,
+      "quantity": 1,
+      "subtotal": 26889
+    }
+  ],
+  "total": 26889,
+  "notes": "",
+  "date": "2025-05-25T23:33:25.095Z",
+  "status": "completed",
+  "id": "tr_1748216005101",
+  "userId": "user_1748215939623",
+  "filename": "invoice_zakyulum_1748216005101"
+}

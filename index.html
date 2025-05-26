@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pembayaran</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Toast JS -->
+    <script src="js/toast.js"></script>
+    <style>
+        #toast {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            width: fit-content;
+            max-width: 90vw;
+        }
+
+        #toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #toast .flex {
+            display: inline-flex;
+            align-items: center;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        #toast i {
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        #toast-message {
+            display: inline-block;
+        }
+        /* Tambahan style untuk posisi ikon pencarian */
+        .search-icon-right {
+            right: 0.75rem !important;
+            left: auto !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .search-input-with-icon {
+            padding-right: 2.75rem !important;
+            padding-left: 0.75rem !important;
+        }
+
+        .search-icon-right i {
+            font-size: 0.875rem;
+            line-height: 1;
+        }
+
+        #sidebar {
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        }
+
+        /* Tambahan style untuk tabel - Dinonaktifkan */
+        /* 
+        table tbody tr td {
+            padding: 1rem 1.5rem;
+            vertical-align: middle;
+        }
+
+        table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        table tbody tr td:first-child {
+            padding-left: 1.5rem;
+        }
+
+        table tbody tr td:last-child {
+            padding-right: 1.5rem;
+        }
+        */
+
+        /* Add custom styles */
+        @media (min-width: 768px) {
+            .md\:pl-64 {
+                padding-left: 16rem;
+            }
+        }
+        
+        .tab-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        #sidebar {
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        }
+
+        /* Mobile Navigation Styles */
+        @media (max-width: 767px) {
+            #menu-toggle {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 50;
+            }
+
+            #sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 60vw !important;
+                min-width: 120px !important;
+                max-width: 200px !important;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                padding-top: 4rem; /* Ensure this is applied */
+                box-sizing: border-box; /* Ensure padding is included in height */
+            }
+
+            #sidebar.translate-x-0 {
+                transform: translateX(0);
+            }
+
+            #overlay {
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            #overlay:not(.hidden) {
+                opacity: 1;
+            }
+
+            /* Hide menu toggle when login is active (mobile) */
+            /* body.login-active #menu-toggle { display: none !important; } */ /* Keeping the CSS logic here, but will rely on z-index for now */
+
+            /* Ensure initial-view is above menu toggle on mobile */
+            #initial-view {
+                 z-index: 60; /* Higher than menu-toggle's z-index 50 */
+            }
+
+            /* Ensure register-form-container is also above menu toggle and overlay on mobile */
+            #register-form-container {
+                 z-index: 60; /* Same as initial-view */
+            }
+
+            /* Mobile UI Improvements */
+            .p-4 {
+                padding: 0.4rem !important;
+            }
+
+            .p-6 {
+                padding: 1rem;
+            }
+
+            .space-y-4 > * + * {
+                margin-top: 0.75rem;
+            }
+
+            .space-y-2 > * + * {
+                margin-top: 0.5rem;
+            }
+
+            .text-xl {
+                font-size: 0.9rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+
+            .text-lg {
+                font-size: 0.95rem !important;
+            }
+
+            .text-sm {
+                font-size: 0.75rem !important;
+            }
+
+            .rounded-lg {
+                border-radius: 0.375rem;
+            }
+
+            .shadow-md {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            /* Improve table responsiveness */
+            .overflow-x-auto {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+
+            /* Improve button touch targets */
+            button, 
+            a.tab-button {
+                min-height: 2.5rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            /* Improve form inputs */
+            input, 
+            select, 
+            textarea {
+                font-size: 16px; /* Prevent zoom on iOS */
+                padding: 0.5rem;
+            }
+
+            /* Improve spacing in cards */
+            .bg-white {
+                margin: 0.5rem;
+                border-radius: 0.5rem;
+            }
+
+            /* Improve modal on mobile */
+            .fixed.inset-0 {
+                padding: 0.5rem;
+            }
+
+            .max-w-md {
+                width: calc(100% - 1rem);
+            }
+
+            /* Popup peringatan/modal konfirmasi lebih kecil di mobile */
+            #delete-modal .max-w-md,
+            #delete-modal > div,
+            #delete-modal .bg-white {
+                max-width: 90vw !important;
+                width: 90vw !important;
+                padding: 1rem !important;
+            }
+            #delete-modal .text-lg {
+                font-size: 1rem !important;
+            }
+            #delete-modal .text-4xl {
+                font-size: 2rem !important;
+            }
+
+            #sidebar nav .px-4 {
+                padding-left: 0.4rem !important;
+                padding-right: 0.4rem !important;
+            }
+            #sidebar nav .py-2 {
+                padding-top: 0.3rem !important;
+                padding-bottom: 0.3rem !important;
+            }
+
+            .tab-content {
+                padding-left: 0 !important;
+                padding-top: 1.5rem !important;
+            }
+
+            .tab-content h1,
+            .tab-content h2,
+            .tab-content h3 {
+                font-size: 1.7rem !important;
+                text-align: right !important;
+                padding-right: 2.5rem !important;
+                padding-left: 0 !important;
+                font-weight: bold;
+                margin-bottom: 1rem;
+            }
+
+            .tab-content .tab-header {
+                flex-direction: row-reverse !important;
+                align-items: flex-end !important;
+            }
+            .tab-content .tab-header h1 {
+                text-align: right !important;
+                font-size: 2rem !important;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Kembalikan rata kiri dan ukuran font default untuk judul kecil di dalam .tab-content */
+            .tab-content h2.text-lg,
+            .tab-content h3.text-lg,
+            .tab-content h3.text-md {
+                text-align: left !important;
+                font-size: 1rem !important;
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+                margin-bottom: 1rem;
+            }
+
+            #import-products-btn,
+            #add-new-product {
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+                padding: 0 !important;
+                font-size: 1.2rem !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                position: relative !important;
+            }
+            #import-products-btn i,
+            #add-new-product i {
+                font-size: 1.2rem !important;
+                margin: 0 !important;
+            }
+            #import-products-btn:hover::after,
+            #add-new-product:hover::after {
+                content: attr(title);
+                position: absolute;
+                right: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                z-index: 1000;
+                margin-right: 8px;
+            }
+        }
+
+        /* Tambahan style untuk tabel */
+        table tbody tr td {
+            padding: 1rem 1.5rem;
+            vertical-align: middle;
+        }
+
+        /* Toast Notification Mobile Styles */
+        @media (max-width: 767px) {
+            #toast {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                margin: 0 auto;
+                width: auto;
+                max-width: calc(100% - 2rem);
+            }
+
+            #toast .flex {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #sidebar {
+                width: 60vw !important;
+                min-width: 120px !important;
+                max-width: 200px !important;
+            }
+            #sidebar .p-4 {
+                padding: 0.4rem !important;
+            }
+            #sidebar .text-xl {
+                font-size: 0.9rem !important;
+            }
+            #sidebar .text-lg {
+                font-size: 0.95rem !important;
+            }
+            #sidebar .text-sm {
+                font-size: 0.75rem !important;
+            }
+            #sidebar nav .px-4 {
+                padding-left: 0.4rem !important;
+                padding-right: 0.4rem !important;
+            }
+            #sidebar nav .py-2 {
+                padding-top: 0.3rem !important;
+                padding-bottom: 0.3rem !important;
+            }
+        }
+
+        /* Tambahkan CSS untuk tombol desktop */
+        @media (min-width: 768px) {
+            #import-products-btn,
+            #add-new-product {
+                min-width: 180px !important;
+                height: 48px !important;
+                font-weight: 500 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 0.75rem !important;
+                margin-right: 1rem !important;
+            }
+            #import-products-btn:last-child,
+            #add-new-product:last-child {
+                margin-right: 0 !important;
+            }
+            #import-products-btn i,
+            #add-new-product i {
+                font-size: 1.25rem !important;
+                margin: 0 !important;
+            }
+            #import-products-btn span,
+            #add-new-product span {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+                display: block !important;
+            }
+        }
+
+        /* Adjust product table spacing and text size on mobile */
+        #tab-products table th,
+        #tab-products table td {
+            padding-left: 0.5rem !important; /* Reduce left padding */
+            padding-right: 0.5rem !important; /* Reduce right padding */
+            font-size: 0.875rem !important; /* Optional: slightly increase text size if needed, text-sm is 0.875rem */
+        }
+        
+        /* Ensure specific columns have correct alignment */
+        #tab-products table th:nth-child(2),
+        #tab-products table td:nth-child(2) { /* Harga column */
+            text-align: right !important;
+        }
+        #tab-products table th:nth-child(3),
+        #tab-products table td:nth-child(3) { /* Stok column */
+            text-align: center !important;
+        }
+        #tab-products table th:nth-child(4),
+        #tab-products table td:nth-child(4) { /* Aksi column */
+            text-align: center !important;
+        }
+
+        /* Adjust transaction history table spacing and text size on mobile */
+        #tab-history table th,
+        #tab-history table td {
+            padding-left: 0.5rem !important; /* Reduce left padding */
+            padding-right: 0.5rem !important; /* Reduce right padding */
+            font-size: 0.875rem !important; /* Optional: ensure text size */
+        }
+        
+        /* Ensure specific history columns have correct alignment */
+        #tab-history table th:nth-child(1),
+        #tab-history table td:nth-child(1) { /* Tanggal column */
+            text-align: left !important;
+        }
+         #tab-history table th:nth-child(2),
+        #tab-history table td:nth-child(2) { /* No. Invoice column */
+            text-align: left !important;
+        }
+        #tab-history table th:nth-child(3),
+        #tab-history table td:nth-child(3) { /* Pelanggan column */
+            text-align: left !important;
+        }
+        #tab-history table th:nth-child(4),
+        #tab-history table td:nth-child(4) { /* Total column */
+            text-align: right !important;
+        }
+        #tab-history table th:nth-child(5),
+        #tab-history table td:nth-child(5) { /* Aksi column */
+            text-align: center !important;
+        }
+
+        /* Fade-in transition for tab content */
+        .tab-content {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1; /* Default opacity 1 */
+        }
+
+        .tab-content.hidden {
+            display: none; /* Gunakan display: none untuk hidden */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tab-content.visible {
+            display: block; /* Gunakan display: block untuk visible */
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Class for applying fade-in animation */
+        .fade-in-item {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Add smooth transitions for buttons */
+        button {
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-out, box-shadow 0.2s ease-in-out;
+        }
+
+        button:active {
+             transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Loading Indicator -->
+    <div id="global-loader" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-[9999] hidden">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+        <p class="ml-4 text-white text-xl">Memuat data...</p>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button id="menu-toggle" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors shadow-md">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay for mobile menu -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Initial View (Before Login) -->
+    <div id="initial-view" class="fixed inset-0 bg-gray-100 flex items-center justify-center z-40">
+        <div class="text-center p-8 bg-white rounded-lg shadow-lg max-w-md mx-auto">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">Selamat Datang</h1>
+            <p class="text-gray-600 mb-6">Silakan login atau daftar untuk melanjutkan.</p>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 text-left">Username</label>
+                    <input type="text" id="login-username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 text-left">Password</label>
+                    <div class="relative mt-1">
+                        <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pr-24" required style="padding-right: 60px;">
+                        <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                            <i class="fas fa-eye" id="toggle-login-password"></i>
+                        </span>
+                    </div>
+                </div>
+                <div id="login-error" class="text-red-500 text-sm hidden"></div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                    Login
+                </button>
+                <p class="text-sm text-gray-600">
+                    <a href="#" id="show-register-btn" class="text-blue-600 hover:text-blue-800">Belum punya akun? Daftar di sini</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Form Container -->
+    <div id="register-form-container" class="fixed inset-0 bg-gray-100 flex items-center justify-center z-40 hidden">
+        <div class="text-center p-8 bg-white rounded-lg shadow-lg max-w-md mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Daftar Akun Baru</h2>
+            <form id="register-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 text-left">Username</label>
+                    <input type="text" id="register-username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 text-left">Password</label>
+                    <div class="relative mt-1">
+                        <input type="password" id="register-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                            <i class="fas fa-eye" id="toggle-register-password"></i>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1 text-left">Konfirmasi Password</label>
+                    <div class="relative mt-1">
+                        <input type="password" id="register-confirm-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                            <i class="fas fa-eye" id="toggle-register-confirm-password"></i>
+                        </span>
+                    </div>
+                </div>
+                <div id="register-error" class="text-red-500 text-sm"></div>
+                <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
+                    Daftar
+                </button>
+                <p class="text-sm text-gray-600">
+                    <a href="#" id="show-login-btn" class="text-blue-600 hover:text-blue-800">Sudah punya akun? Login di sini</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-content" class="min-h-screen md:pl-64 hidden">
+        <!-- Sidebar -->
+        <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-blue-600 text-white transform transition-transform duration-200 ease-in-out -translate-x-full md:translate-x-0 z-30">
+            <div class="p-4 md:pt-4">
+                <h1 id="store-name-sidebar" class="text-xl font-bold mb-1">Toko Saya</h1>
+                <p id="store-address-sidebar" class="text-sm mb-4">Jl. Contoh No. 123</p>
+                
+                <!-- Tab Navigation -->
+                <nav class="space-y-2">
+                    <a href="#" class="tab-button block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors" data-tab="tab-new-transaction">
+                        <i class="fas fa-cart-plus mr-2"></i>Transaksi Baru
+                    </a>
+                    <a href="#" class="tab-button block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors" data-tab="tab-history">
+                        <i class="fas fa-history mr-2"></i>Riwayat Transaksi
+                    </a>
+                    <a href="#" class="tab-button block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors" data-tab="tab-products">
+                        <i class="fas fa-box mr-2"></i>Kelola Produk
+                    </a>
+                    <a href="#" class="tab-button block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors" data-tab="tab-settings">
+                        <i class="fas fa-cog mr-2"></i>Pengaturan Toko
+                    </a>
+                    <a href="#" class="tab-button block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors" data-tab="tab-password">
+                        <i class="fas fa-key mr-2"></i>Ubah Kata Sandi
+                    </a>
+                    <a href="#" id="logout-button" class="block px-4 py-2 rounded text-white opacity-80 hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 p-4 md:p-6 bg-gray-100 min-h-screen">
+            <!-- Tab Contents -->
+            <div id="tab-new-transaction" class="tab-content">
+                <!-- Header for "Transaksi Baru" -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 tab-header">
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-0">Transaksi Baru</h1>
+                    <div class="text-left md:text-right">
+                        <p class="text-sm text-gray-600" id="current-date"></p>
+                    </div>
+                </div>
+
+                <!-- Order Form Section with Two Columns -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> 
+                        <!-- Left Column: Customer Info -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Informasi Pelanggan</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="customer-name" class="block text-sm font-medium text-gray-700">Nama Pelanggan *</label>
+                                    <input type="text" id="customer-name" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2">
+                                </div>
+                                <div>
+                                    <label for="customer-phone" class="block text-sm font-medium text-gray-700">No. WhatsApp</label>
+                                    <input type="tel" id="customer-phone" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2">
+                                </div>
+                                <div>
+                                    <label for="customer-address" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                    <textarea id="customer-address" rows="2" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"></textarea>
+                                </div>
+                                <div>
+                                    <label for="order-notes" class="block text-sm font-medium text-gray-700">Catatan</label>
+                                    <textarea id="order-notes" rows="2" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Order Items, Summary, and Process Button -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Item Pesanan</h3>
+                            <div class="space-y-4">
+                                <div class="relative">
+                                    <label for="product-search" class="block text-sm font-medium text-gray-700">Cari Produk</label>
+                                    <input type="text" id="product-search" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2">
+                                    <div id="product-suggestions" class="absolute z-10 w-full mt-1 hidden">
+                                        <ul class="max-h-60 overflow-auto bg-white border border-gray-300 rounded-md shadow-lg"></ul>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="product-quantity" class="block text-sm font-medium text-gray-700">Jumlah</label>
+                                        <input type="number" id="product-quantity" value="1" min="1" class="mt-1 block w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Harga</label>
+                                        <div id="product-price" class="mt-2 text-gray-900">Rp 0</div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Subtotal</label>
+                                        <div id="product-subtotal" class="mt-2 text-gray-900">Rp 0</div>
+                                    </div>
+                                    <button id="add-product" disabled class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed">
+                                        Tambah
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Hidden inputs for selected product -->
+                            <input type="hidden" id="selected-product-id">
+                            <input type="hidden" id="selected-product-price">
+
+                            <!-- Order Summary Table -->
+                            <div class="mt-6">
+                                <h3 class="text-lg font-semibold mb-4">Ringkasan Pesanan</h3>
+                                <div class="border rounded-lg overflow-hidden">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Produk</th>
+                                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">Jumlah</th>
+                                                <th class="px-4 py-2 text-right text-sm font-medium text-gray-500">Subtotal</th>
+                                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="order-items" class="bg-white divide-y divide-gray-200">
+                                            <!-- Order items will be inserted here -->
+                                        </tbody>
+                                        <tfoot class="bg-gray-50">
+                                            <tr>
+                                                <td colspan="2" class="px-4 py-2 text-right font-medium">Total:</td>
+                                                <td id="order-total" class="px-4 py-2 text-right font-medium">Rp 0</td>
+                                                <td></td> <!-- Empty cell for Aksi column -->
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Process Order Button -->
+                            <div class="mt-6 flex justify-end">
+                                <button onclick="processOrder()" class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                                    Proses Pesanan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoice Preview Section (Initially Hidden) -->
+                <div id="invoice-preview-section" class="hidden bg-white p-6 rounded-lg shadow-md mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 border-b pb-2">
+                        <h3 class="text-lg font-semibold">Preview Invoice</h3>
+                        <div class="flex flex-row space-x-2 mt-2 md:mt-0">
+                            <button id="share-whatsapp" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2"></i> Kirim via WhatsApp
+                            </button>
+                            <button id="copy-nota-link" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition flex items-center justify-center">
+                                <i class="fas fa-copy mr-2"></i> Cetak Nota
+                            </button>
+                        </div>
+                    </div>
+                    <div id="invoice-preview-content">
+                        <!-- Konten preview invoice akan dimuat di sini oleh JavaScript -->
+                        <p class="text-gray-500 text-center py-4">Invoice akan ditampilkan di sini setelah pesanan diproses.</p>
+                    </div>
+                </div>
+
+                <!-- Sales Summary Section -->
+                <div class="mt-6 bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Ringkasan Penjualan Bulan Ini</h2>
+                    <div class="flex flex-col md:flex-row md:gap-x-6">
+                        <div class="relative h-64 md:flex-1 mb-6 md:mb-0">
+                            <canvas id="monthly-sales-chart"></canvas>
+                        </div>
+                        <div id="monthly-product-sales-list" class="md:flex-1">
+                            <h3 class="text-md font-semibold mb-2 text-gray-800">Penjualan per Produk Bulan Ini</h3>
+                            <div class="max-h-60 overflow-y-auto text-sm text-gray-700">
+                                <ul id="monthly-product-sales-items" class="list-disc list-inside space-y-1">
+                                </ul>
+                                <p id="monthly-product-sales-empty" class="text-gray-500 text-center hidden">Belum ada penjualan produk bulan ini.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="monthly-sales-total" class="text-md font-bold text-gray-700 mt-6">Total: Rp 0</div>
+                </div>
+
+                <!-- Nota Preview (Hidden initially) -->
+                <div id="nota-container" class="mt-6 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-2 md:mb-0">Preview Invoice</h2>
+                        <div class="flex flex-row space-x-2 w-full md:w-auto justify-start md:justify-end">
+                            <button id="share-whatsapp" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2"></i> Kirim via WhatsApp
+                            </button>
+                            <button id="copy-nota-link" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition flex items-center justify-center">
+                                <i class="fas fa-copy mr-2"></i> Cetak Nota
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+                        <div class="nota-preview bg-gray-50 p-4 rounded border">
+                            <div id="nota-content" class="bg-white p-4 md:p-6 max-w-2xl mx-auto rounded shadow-sm">
+                                <!-- Nota content will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction History Tab -->
+            <div id="tab-history" class="tab-content hidden">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Riwayat Transaksi</h1>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 border-b">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4">
+                            <div class="flex-1 relative">
+                                <div class="absolute inset-y-0 right-0 flex items-center pointer-events-none search-icon-right">
+                                    <i class="fas fa-magnifying-glass text-gray-400"></i>
+                                </div>
+                                <input type="text" 
+                                       id="search-history" 
+                                       placeholder="Cari transaksi..." 
+                                       class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 search-input-with-icon">
+                            </div>
+                            <div>
+                                <select id="filter-history" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="all">Semua Transaksi</option>
+                                    <option value="today">Hari Ini</option>
+                                    <option value="week">Minggu Ini</option>
+                                    <option value="month">Bulan Ini</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left">Tanggal</th>
+                                    <th class="px-4 py-3 text-left">No. Invoice</th>
+                                    <th class="px-4 py-3 text-left">Pelanggan</th>
+                                    <th class="px-4 py-3 text-right">Total</th>
+                                    <th class="px-4 py-3 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-items">
+                                <!-- History items will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Management Tab -->
+            <div id="tab-products" class="tab-content hidden">
+                <div class="flex flex-row justify-between items-center mb-6 tab-header gap-2">
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-0 text-right md:text-left w-auto order-2 md:order-1">Kelola Produk</h1>
+                    <div class="flex space-x-2 md:space-x-2 order-1 md:order-2">
+                        <div class="fixed bottom-4 right-4 flex flex-col space-y-2 md:static md:flex-row md:space-y-0 md:space-x-8 z-40">
+                            <button id="import-products-btn" class="bg-green-600 text-white p-3 rounded-full md:rounded-md hover:bg-green-700 transition flex items-center justify-center shadow-lg md:shadow-none md:px-8 md:py-3 md:text-base md:min-w-[180px] md:mr-4" title="Import Excel">
+                                <i class="fas fa-file-excel md:mr-3 md:text-lg"></i>
+                                <span class="hidden md:block">Import Excel</span>
+                            </button>
+                            <button id="add-new-product" class="bg-blue-600 text-white p-3 rounded-full md:rounded-md hover:bg-blue-700 transition flex items-center justify-center shadow-lg md:shadow-none md:px-8 md:py-3 md:text-base md:min-w-[180px]" title="Tambah Produk">
+                                <i class="fas fa-plus md:mr-3 md:text-lg"></i>
+                                <span class="hidden md:block">Tambah Produk</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 border-b">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 flex items-center pointer-events-none search-icon-right">
+                                <i class="fas fa-magnifying-glass text-gray-400"></i>
+                            </div>
+                            <input type="text" 
+                                   id="search-product" 
+                                   placeholder="Cari produk..." 
+                                   class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 search-input-with-icon">
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left font-medium text-gray-700">Nama Produk</th>
+                                    <th class="px-6 py-4 text-right font-medium text-gray-700">Harga</th>
+                                    <th class="px-6 py-4 text-center font-medium text-gray-700">Stok</th>
+                                    <th class="px-6 py-4 text-center font-medium text-gray-700">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="product-items">
+                                <!-- Product items will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Store Settings Tab -->
+            <div id="tab-settings" class="tab-content hidden">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Pengaturan Toko</h1>
+                
+                <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <form id="settings-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Toko</label>
+                            <input type="text" id="store-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tagline Toko (Muncul di Nota)</label>
+                            <input type="text" id="store-tagline" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contoh: Jual Eceran Harga Grosir">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Alamat Toko</label>
+                            <textarea id="store-address" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="2" required>Jl. Contoh No. 123</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon Toko (untuk ditampilkan)</label>
+                            <input type="text" id="store-phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Toko (Opsional)</label>
+                            <input type="email" id="store-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value="toko@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Layout Kertas Nota</label>
+                            <select id="paper-layout" class="w-full border rounded px-2 py-1 mb-4">
+                              <option value="A4">A4 (210mm x 297mm)</option>
+                              <option value="thermal80">Thermal 80mm</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pesan Kaki Nota</label>
+                            <textarea id="store-footer" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="2" required>Terima kasih telah berbelanja di toko kami!</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Template Pesan WhatsApp</label>
+                            <textarea id="whatsapp-message-template" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="Gunakan {{customerName}}, {{storeName}}, {{notaLink}}" required></textarea>
+                            <p class="mt-1 text-xs text-gray-500">Gunakan placeholder: <code class="text-blue-600">{{customerName}}</code>, <code class="text-blue-600">{{storeName}}</code>, <code class="text-blue-600">{{notaLink}}</code></p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Logo Toko (Opsional)</label>
+                            <input type="file" id="store-logo" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                            <div id="logo-preview-container" class="mt-2 w-32 h-32 border rounded-md flex items-center justify-center overflow-hidden">
+                                <img id="logo-preview" src="" alt="Logo Preview" class="max-w-full max-h-full object-contain hidden">
+                                <span id="logo-placeholder" class="text-gray-400 text-sm">No Logo</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                            Simpan Pengaturan
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Change Password Tab -->
+            <div id="tab-password" class="tab-content hidden">
+                <h2 class="text-2xl font-bold mb-4">Ubah Kata Sandi</h2>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <p class="text-gray-600 mb-4">Untuk mengubah kata sandi, klik tombol di bawah ini:</p>
+                    <button id="show-change-password-modal" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                        <i class="fas fa-key mr-2"></i> Ubah Kata Sandi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold text-gray-800">Tambah/Edit Produk</h2>
+            </div>
+            <form id="product-form" class="p-4">
+                <input type="hidden" id="product-id">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Produk</label>
+                        <input type="text" id="product-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Harga</label>
+                        <input type="number" id="product-price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
+                        <input type="number" id="product-stock" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
+                        <textarea id="product-description" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-end space-x-2">
+                    <button type="button" id="close-product-modal" class="px-4 py-2 text-gray-600 hover:text-gray-900">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                        Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View/Edit Transaction Modal -->
+    <div id="transaction-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-4 md:p-6 w-full max-w-2xl mx-4 my-8 md:my-0 overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold" id="transaction-modal-title">Detail Transaksi</h3>
+                <button class="text-gray-500 hover:text-gray-700" id="close-transaction-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Transaction Details - View Mode -->
+            <div id="transaction-details-view">
+                 <div id="transaction-details-content" class="space-y-4">
+                    <!-- Transaction details (view mode) will be loaded here -->
+                </div>
+                <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mt-6">
+                    <button id="transaction-whatsapp" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Kirim via WhatsApp
+                    </button>
+                    <button id="transaction-copy" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition flex items-center justify-center">
+                        <i class="fas fa-copy mr-2"></i> Salin Link
+                    </button>
+                    <button id="edit-transaction" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 transition flex items-center justify-center md:ml-auto">
+                        <i class="fas fa-edit mr-2"></i> Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-4 md:p-6 w-full max-w-md mx-4">
+            <div class="text-center mb-4">
+                <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
+                <h3 class="text-lg font-semibold">Konfirmasi Hapus</h3>
+                <p class="text-gray-600 mt-2" id="delete-message">Apakah Anda yakin ingin menghapus item ini?</p>
+            </div>
+            <div class="flex space-x-2 pt-2">
+                <button id="confirm-delete" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition">
+                    Ya
+                </button>
+                <button id="cancel-delete" class="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 transition">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
+            <!-- Login Form -->
+            <form id="login-form-modal" class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Login</h2>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input type="text" id="login-username-modal" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative mt-1">
+                        <input type="password" id="login-password-modal" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-24" required style="padding-right: 60px;">
+                        <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                            <i class="fas fa-eye" id="toggle-login-password-modal"></i>
+                        </span>
+                    </div>
+                </div>
+                <div id="login-error-modal" class="text-red-500 text-sm"></div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                    Login
+                </button>
+            </form>
+
+            <!-- Register Form Container -->
+            <div id="register-form-container" class="hidden space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Daftar Akun Baru</h2>
+                <form id="register-form-modal" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <input type="text" id="register-username-modal" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative mt-1">
+                            <input type="password" id="register-password-modal" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                                <i class="fas fa-eye" id="toggle-register-password-modal"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                        <div class="relative mt-1">
+                            <input type="password" id="register-confirm-password-modal" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <span class="absolute inset-y-0 right-4 flex items-center text-gray-500 cursor-pointer">
+                                <i class="fas fa-eye" id="toggle-register-confirm-password-modal"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="register-error-modal" class="text-red-500 text-sm"></div>
+                    <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">
+                        Daftar
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button id="toggle-forms-btn" class="text-blue-600 hover:text-blue-800">
+                    Belum punya akun? Daftar di sini
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 p-3 md:p-4 rounded-lg shadow-lg z-[9999] max-w-[90vw] md:max-w-none">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2 text-sm md:text-base"></i>
+            <span id="toast-message" class="text-sm md:text-base"></span>
+        </div>
+    </div>
+
+    <!-- Import Product Modal -->
+    <div id="import-product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Import Produk dari Excel</h3>
+                <button class="text-gray-500 hover:text-gray-700" id="close-import-product-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- File Input -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Pilih File Excel (.xlsx)</label>
+                    <input type="file" id="excel-file-input" accept=".xlsx" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                </div>
+
+                <!-- Column Mapping -->
+                <div id="column-mapping" class="space-y-4 hidden border-t pt-4">
+                    <h4 class="font-medium text-gray-900">Pemetaan Kolom</h4>
+                    <p class="text-sm text-gray-600 mb-4">Pilih kolom yang sesuai dengan data produk Anda:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Produk <span class="text-red-500">*</span></label>
+                            <select id="product-name-column" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Pilih Kolom --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Harga <span class="text-red-500">*</span></label>
+                            <select id="product-price-column" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Pilih Kolom --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
+                            <select id="product-stock-column" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Lewati --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Data -->
+                <div id="import-preview" class="hidden border-t pt-4">
+                    <h4 class="font-medium text-gray-900 mb-2">Preview Data</h4>
+                    <p class="text-sm text-gray-600 mb-4">Berikut adalah 5 baris pertama dari data yang akan diimpor:</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="border px-4 py-2 text-left font-medium text-gray-700">Nama Produk</th>
+                                    <th class="border px-4 py-2 text-right font-medium text-gray-700">Harga</th>
+                                    <th class="border px-4 py-2 text-center font-medium text-gray-700">Stok</th>
+                                </tr>
+                            </thead>
+                            <tbody id="import-preview-body">
+                                <!-- Preview rows will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Import Status -->
+                <div id="import-status" class="hidden text-sm p-3 bg-gray-50 rounded-md"></div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-3 pt-4 border-t">
+                    <button id="cancel-import-btn" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors">
+                        Batal
+                    </button>
+                    <button id="start-import-btn" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Mulai Import
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="change-password-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold text-gray-800">Ubah Password</h2>
+            </div>
+            <form id="change-password-form" class="p-4">
+                <div class="space-y-4">
+                    <div>
+                        <label for="current-password" class="block text-sm font-medium text-gray-700 mb-2">Password Saat Ini</label>
+                        <div class="relative mt-1">
+                            <input type="password" id="current-password" name="currentPassword" required class="block w-full pl-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="new-password" class="block text-sm font-medium text-gray-700 mb-2">Password Baru</label>
+                        <div class="relative mt-1">
+                            <input type="password" id="new-password" name="newPassword" required class="block w-full pl-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="confirm-new-password" class="block text-sm font-medium text-gray-700 mb-2">Konfirmasi Password Baru</label>
+                        <div class="relative mt-1">
+                            <input type="password" id="confirm-new-password" name="confirmNewPassword" required class="block w-full pl-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+                    <div id="change-password-error" class="text-red-500 text-sm hidden"></div>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <button type="button" id="toggle-password-visibility" class="px-4 py-2 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-eye mr-2"></i>Lihat
+                    </button>
+                    <div class="flex space-x-2">
+                        <button type="button" id="close-change-password-modal" class="px-4 py-2 text-gray-600 hover:text-gray-900">
+                            Batal
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            Ubah Password
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Transaksi -->
+    <div id="edit-transaction-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl mx-4 p-6 relative">
+        <h3 class="text-lg font-semibold mb-4">Edit Transaksi</h3>
+        <form id="edit-transaction-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Pelanggan</label>
+            <input type="text" id="edit-customer-name" class="w-full px-3 py-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
+            <input type="text" id="edit-customer-phone" class="w-full px-3 py-2 border rounded">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+            <input type="text" id="edit-customer-address" class="w-full px-3 py-2 border rounded">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Catatan</label>
+            <textarea id="edit-order-notes" class="w-full px-3 py-2 border rounded"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Cari Produk</label>
+            <div class="relative">
+              <input type="text" id="edit-product-search" class="w-full px-3 py-2 border rounded" placeholder="Cari produk...">
+              <div id="edit-product-suggestions" class="absolute z-10 w-full mt-1 hidden">
+                <ul class="max-h-60 overflow-auto bg-white border border-gray-300 rounded-md shadow-lg"></ul>
+              </div>
+              <input type="hidden" id="edit-selected-product-id">
+              <input type="hidden" id="edit-selected-product-price">
+            </div>
+            <div class="flex items-center mt-2">
+              <input type="number" id="edit-product-quantity" class="w-20 px-2 py-1 border rounded mr-2" min="1" value="1">
+              <span id="edit-product-subtotal" class="mr-2">Rp 0</span>
+              <button type="button" id="add-product-to-edit-order" class="ml-auto bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" disabled>Tambah</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Daftar Produk</label>
+            <table class="w-full text-sm border-collapse" id="edit-products-table">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th class="border px-2 py-1">Produk</th>
+                  <th class="border px-2 py-1">Qty</th>
+                  <th class="border px-2 py-1">Harga</th>
+                  <th class="border px-2 py-1">Subtotal</th>
+                  <th class="border px-2 py-1">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="edit-products-tbody">
+                <!-- Baris produk akan diisi via JS -->
+              </tbody>
+            </table>
+            <div class="text-right font-semibold mt-2">Total: <span id="edit-order-total">Rp 0</span></div>
+          </div>
+          <div class="flex justify-end space-x-2 pt-2">
+            <button type="button" id="cancel-edit-transaction" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Batal</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan Perubahan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    // Show toast notification
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const icon = toast.querySelector('i');
+        
+        if (!toast || !toastMessage) {
+            console.error('Toast elements not found!');
+            return;
+        }
+        
+        // Set message
+        toastMessage.textContent = message;
+        
+        // Reset classes
+        toast.className = 'fixed bottom-4 right-4 p-4 rounded-lg shadow-lg z-[9999]';
+        
+        // Set type and icon
+        if (type === 'success') {
+            toast.classList.add('bg-green-500', 'text-white');
+            icon.className = 'fas fa-check-circle mr-2';
+        } else if (type === 'error') {
+            toast.classList.add('bg-red-500', 'text-white');
+            icon.className = 'fas fa-times-circle mr-2';
+        } else if (type === 'warning') {
+            toast.classList.add('bg-yellow-500', 'text-white');
+            icon.className = 'fas fa-exclamation-circle mr-2';
+        } else if (type === 'info') {
+            toast.classList.add('bg-blue-500', 'text-white');
+            icon.className = 'fas fa-info-circle mr-2';
+        }
+        
+        // Force reflow
+        void toast.offsetWidth;
+        
+        // Show toast
+        toast.classList.add('show');
+        
+        // Hide toast after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+    </script>
+</body>
+</html> 

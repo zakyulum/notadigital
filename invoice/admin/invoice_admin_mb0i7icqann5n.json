@@ -1,0 +1,21 @@
+{
+  "id": "tmb0i7icqw9nwt",
+  "date": "2025-05-23T07:53:19.274Z",
+  "invoiceNumber": "INV/0001",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0i7icqzb0ky",
+      "productId": "pmazuxd453wmz4",
+      "productName": "korek",
+      "price": 1111,
+      "quantity": 1,
+      "subtotal": 1111
+    }
+  ],
+  "total": 1111,
+  "filename": "invoice_admin_mb0i7icqann5n.json"
+}

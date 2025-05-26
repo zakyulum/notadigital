@@ -1,0 +1,27 @@
+{
+  "invoiceNumber": "INV-88",
+  "customerName": "zakyulumx",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jemberperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "name": "Baterai AAa",
+      "quantity": 1,
+      "price": 47753,
+      "subtotal": 47753
+    },
+    {
+      "name": "Charger HP",
+      "quantity": 3,
+      "price": 35304,
+      "subtotal": 105912
+    }
+  ],
+  "total": 153665,
+  "notes": "",
+  "date": "2025-05-24T21:43:35.731Z",
+  "status": "completed",
+  "id": "tr_1748123015760",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748123015760"
+}

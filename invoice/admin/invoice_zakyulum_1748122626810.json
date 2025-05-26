@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-87",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcy74ol",
+      "name": "Buku Tulis",
+      "price": 36225,
+      "quantity": 1,
+      "subtotal": 36225
+    }
+  ],
+  "total": 36225,
+  "notes": "",
+  "date": "2025-05-24T21:37:06.787Z",
+  "status": "completed",
+  "id": "tr_1748122626810",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748122626810"
+}

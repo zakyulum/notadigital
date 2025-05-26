@@ -1,0 +1,29 @@
+{
+  "invoiceNumber": "INV-73",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcf4k39",
+      "name": "Ayam Potong",
+      "price": 26889,
+      "quantity": 1,
+      "subtotal": 26889
+    },
+    {
+      "productId": "pmb0jhpgccjtu6",
+      "name": "Flashdisk",
+      "price": 35642,
+      "quantity": 1,
+      "subtotal": 35642
+    }
+  ],
+  "total": 62531,
+  "notes": "",
+  "date": "2025-05-24T20:32:08.566Z",
+  "status": "completed",
+  "id": "tr_1748118728564",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748118728564"
+}

@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-2",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "prod_l9ak2djc9tm",
+      "name": "Biskuit",
+      "price": 7944,
+      "quantity": 1,
+      "subtotal": 7944
+    }
+  ],
+  "total": 7944,
+  "notes": "",
+  "date": "2025-05-26T14:04:27.438Z",
+  "status": "completed",
+  "id": "tr_1748268267446",
+  "userId": "user_1748215939623",
+  "filename": "invoice_zakyulum_1748268267446"
+}

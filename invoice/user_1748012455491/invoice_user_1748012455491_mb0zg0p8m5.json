@@ -1,0 +1,22 @@
+{
+  "id": "tmb0zg0p71h3s4",
+  "date": "2025-05-23T15:55:49.771Z",
+  "invoiceNumber": "INV/0003",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "notes": "",
+  "items": [
+    {
+      "id": "imb0zg0p7jvigv",
+      "productId": "pmb0xhxcr6uwvb",
+      "productName": "Pasta Gigi",
+      "price": 25821,
+      "quantity": 1,
+      "subtotal": null
+    }
+  ],
+  "total": null,
+  "userId": "user_1748012455491",
+  "filename": "invoice_user_1748012455491_mb0zg0p8m5.json"
+}

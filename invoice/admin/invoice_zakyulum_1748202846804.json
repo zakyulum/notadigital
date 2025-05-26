@@ -1,0 +1,39 @@
+{
+  "invoiceNumber": "INV-105",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember",
+  "items": [
+    {
+      "name": "Biskuit",
+      "quantity": 1,
+      "price": 7944,
+      "subtotal": 7944
+    },
+    {
+      "name": "Daging Sapi",
+      "quantity": 1,
+      "price": 45300,
+      "subtotal": 45300
+    },
+    {
+      "name": "Flashdisk",
+      "quantity": 1,
+      "price": 35642,
+      "subtotal": 35642
+    },
+    {
+      "name": "Charger HP",
+      "quantity": 1,
+      "price": 35304,
+      "subtotal": 35304
+    }
+  ],
+  "total": 124190,
+  "notes": "",
+  "date": "2025-05-25T19:54:06.774Z",
+  "status": "completed",
+  "id": "tr_1748202846804",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748202846804"
+}

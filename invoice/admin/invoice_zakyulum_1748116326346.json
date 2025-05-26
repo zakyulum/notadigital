@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-63",
+  "customerName": "zakyulum",
+  "customerPhone": "",
+  "customerAddress": "jl. jumat, perum milenia c7 no.7 kali wates, jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgch0dfq",
+      "name": "Cokelat Batangan",
+      "price": 7418,
+      "quantity": 1,
+      "subtotal": 7418
+    }
+  ],
+  "total": 7418,
+  "notes": "",
+  "date": "2025-05-24T19:52:06.329Z",
+  "status": "completed",
+  "id": "tr_1748116326346",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748116326346"
+}

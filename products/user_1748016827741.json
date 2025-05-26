@@ -1,0 +1,352 @@
+[
+  {
+    "id": "pmb103fybwcxpf",
+    "name": "Sabun Mandi",
+    "price": 62,
+    "description": "",
+    "stock": 62
+  },
+  {
+    "id": "pmb103fybq8z41",
+    "name": "Shampoo",
+    "price": 100,
+    "description": "",
+    "stock": 100
+  },
+  {
+    "id": "pmb103fybpx17m",
+    "name": "Pasta Gigi",
+    "price": 143,
+    "description": "",
+    "stock": 143
+  },
+  {
+    "id": "pmb103fybl0soj",
+    "name": "Sikat Gigi",
+    "price": 154,
+    "description": "",
+    "stock": 154
+  },
+  {
+    "id": "pmb103fyblxqyq",
+    "name": "Tissue",
+    "price": 163,
+    "description": "",
+    "stock": 163
+  },
+  {
+    "id": "pmb103fybieup7",
+    "name": "Minyak Goreng",
+    "price": 64,
+    "description": "",
+    "stock": 64
+  },
+  {
+    "id": "pmb103fybg40ew",
+    "name": "Gula Pasir",
+    "price": 160,
+    "description": "",
+    "stock": 160
+  },
+  {
+    "id": "pmb103fybypafx",
+    "name": "Kopi Bubuk",
+    "price": 97,
+    "description": "",
+    "stock": 97
+  },
+  {
+    "id": "pmb103fyb1no0q",
+    "name": "Teh Celup",
+    "price": 187,
+    "description": "",
+    "stock": 187
+  },
+  {
+    "id": "pmb103fyb0b6py",
+    "name": "Air Mineral",
+    "price": 140,
+    "description": "",
+    "stock": 140
+  },
+  {
+    "id": "pmb103fybtykoy",
+    "name": "Beras",
+    "price": 113,
+    "description": "",
+    "stock": 113
+  },
+  {
+    "id": "pmb103fyb6kg8t",
+    "name": "Mie Instan",
+    "price": 88,
+    "description": "",
+    "stock": 88
+  },
+  {
+    "id": "pmb103fyb521eg",
+    "name": "Susu Bubuk",
+    "price": 187,
+    "description": "",
+    "stock": 187
+  },
+  {
+    "id": "pmb103fyb68zs3",
+    "name": "Kecap Manis",
+    "price": 99,
+    "description": "",
+    "stock": 99
+  },
+  {
+    "id": "pmb103fybnyusz",
+    "name": "Saos Tomat",
+    "price": 93,
+    "description": "",
+    "stock": 93
+  },
+  {
+    "id": "pmb103fybtkl67",
+    "name": "Mentega",
+    "price": 96,
+    "description": "",
+    "stock": 96
+  },
+  {
+    "id": "pmb103fybd7ptm",
+    "name": "Roti Tawar",
+    "price": 20,
+    "description": "",
+    "stock": 20
+  },
+  {
+    "id": "pmb103fybgam6z",
+    "name": "Keju Slice",
+    "price": 79,
+    "description": "",
+    "stock": 79
+  },
+  {
+    "id": "pmb103fybn4yfg",
+    "name": "Telur Ayam",
+    "price": 167,
+    "description": "",
+    "stock": 167
+  },
+  {
+    "id": "pmb103fyb1jfwe",
+    "name": "Ayam Potong",
+    "price": 81,
+    "description": "",
+    "stock": 81
+  },
+  {
+    "id": "pmb103fybkfexf",
+    "name": "Daging Sapi",
+    "price": 90,
+    "description": "",
+    "stock": 90
+  },
+  {
+    "id": "pmb103fyb7p0wo",
+    "name": "Ikan Asin",
+    "price": 72,
+    "description": "",
+    "stock": 72
+  },
+  {
+    "id": "pmb103fyb6fymr",
+    "name": "Sarden Kaleng",
+    "price": 43,
+    "description": "",
+    "stock": 43
+  },
+  {
+    "id": "pmb103fybtgwzq",
+    "name": "Biskuit",
+    "price": 158,
+    "description": "",
+    "stock": 158
+  },
+  {
+    "id": "pmb103fybupocf",
+    "name": "Cokelat Batangan",
+    "price": 170,
+    "description": "",
+    "stock": 170
+  },
+  {
+    "id": "pmb103fybdrevf",
+    "name": "Keripik Kentang",
+    "price": 86,
+    "description": "",
+    "stock": 86
+  },
+  {
+    "id": "pmb103fybniflv",
+    "name": "Minuman Soda",
+    "price": 113,
+    "description": "",
+    "stock": 113
+  },
+  {
+    "id": "pmb103fybczx63",
+    "name": "Jus Buah",
+    "price": 149,
+    "description": "",
+    "stock": 149
+  },
+  {
+    "id": "pmb103fyb3zus9",
+    "name": "Kacang Goreng",
+    "price": 104,
+    "description": "",
+    "stock": 104
+  },
+  {
+    "id": "pmb103fyb1f69g",
+    "name": "Detergen Bubuk",
+    "price": 36,
+    "description": "",
+    "stock": 36
+  },
+  {
+    "id": "pmb103fybiy017",
+    "name": "Pewangi Pakaian",
+    "price": 182,
+    "description": "",
+    "stock": 182
+  },
+  {
+    "id": "pmb103fyb0m8cl",
+    "name": "Sabun Cuci Piring",
+    "price": 124,
+    "description": "",
+    "stock": 124
+  },
+  {
+    "id": "pmb103fybe2yyf",
+    "name": "Pembersih Lantai",
+    "price": 122,
+    "description": "",
+    "stock": 122
+  },
+  {
+    "id": "pmb103fybrmkgi",
+    "name": "Tisu Basah",
+    "price": 71,
+    "description": "",
+    "stock": 71
+  },
+  {
+    "id": "pmb103fyb9laf3",
+    "name": "Masker Medis",
+    "price": 139,
+    "description": "",
+    "stock": 139
+  },
+  {
+    "id": "pmb103fybg2gab",
+    "name": "Hand Sanitizer",
+    "price": 75,
+    "description": "",
+    "stock": 75
+  },
+  {
+    "id": "pmb103fyb8rdgz",
+    "name": "Obat Batuk",
+    "price": 164,
+    "description": "",
+    "stock": 164
+  },
+  {
+    "id": "pmb103fybeh9rz",
+    "name": "Vitamin C",
+    "price": 142,
+    "description": "",
+    "stock": 142
+  },
+  {
+    "id": "pmb103fybiqxz5",
+    "name": "Obat Sakit Kepala",
+    "price": 80,
+    "description": "",
+    "stock": 80
+  },
+  {
+    "id": "pmb103fybj8qnv",
+    "name": "Minyak Kayu Putih",
+    "price": 172,
+    "description": "",
+    "stock": 172
+  },
+  {
+    "id": "pmb103fybv9pff",
+    "name": "Lotion Anti Nyamuk",
+    "price": 177,
+    "description": "",
+    "stock": 177
+  },
+  {
+    "id": "pmb103fybww5ov",
+    "name": "Obat Luka",
+    "price": 177,
+    "description": "",
+    "stock": 177
+  },
+  {
+    "id": "pmb103fyb3ibra",
+    "name": "Baterai AA",
+    "price": 194,
+    "description": "",
+    "stock": 194
+  },
+  {
+    "id": "pmb103fyb0ay0d",
+    "name": "Lampu LED",
+    "price": 149,
+    "description": "",
+    "stock": 149
+  },
+  {
+    "id": "pmb103fyb08vgl",
+    "name": "Charger HP",
+    "price": 84,
+    "description": "",
+    "stock": 84
+  },
+  {
+    "id": "pmb103fyb44lb0",
+    "name": "Kabel USB",
+    "price": 131,
+    "description": "",
+    "stock": 131
+  },
+  {
+    "id": "pmb103fybyo56f",
+    "name": "Flashdisk",
+    "price": 47,
+    "description": "",
+    "stock": 47
+  },
+  {
+    "id": "pmb103fybsjca4",
+    "name": "Buku Tulis",
+    "price": 42,
+    "description": "",
+    "stock": 42
+  },
+  {
+    "id": "pmb103fybhfwnh",
+    "name": "Pulpen",
+    "price": 110,
+    "description": "",
+    "stock": 110
+  },
+  {
+    "id": "pmb103fybyc8ih",
+    "name": "Pensil",
+    "price": 182,
+    "description": "",
+    "stock": 182
+  }
+]

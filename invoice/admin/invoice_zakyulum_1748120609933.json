@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-81",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgc6erqn",
+      "name": "Jus Buah",
+      "price": 12687,
+      "quantity": 1,
+      "subtotal": 12687
+    }
+  ],
+  "total": 12687,
+  "notes": "",
+  "date": "2025-05-24T21:03:29.925Z",
+  "status": "completed",
+  "id": "tr_1748120609933",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748120609933"
+}

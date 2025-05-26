@@ -1,0 +1,10 @@
+{
+  "storeName": "Toko Saya",
+  "storeAddress": "Jl. Contoh No. 123",
+  "storePhone": "08123456789",
+  "storeEmail": "toko@example.com",
+  "storeFooter": "Terima kasih telah berbelanja di toko kami!",
+  "storeLogo": null,
+  "storeTagline": "Jual Eceran Harga Grosir",
+  "whatsappMessageTemplate": "Halo {{customerName}}, berikut adalah nota transaksi Anda dari {{storeName}}:\n\n{{notaLink}}\n\nTerima kasih!"
+}

@@ -1,0 +1,22 @@
+{
+  "invoiceNumber": "INV-55",
+  "customerName": "zakyulum",
+  "customerPhone": "628816041702",
+  "customerAddress": "jl. jumat, perum milenia c7 no.8 kali wates, jember\nperum milenia c7 no.8, Kaliwates, Jember",
+  "items": [
+    {
+      "productId": "pmb0jhpgcqrb38",
+      "name": "Beras",
+      "price": 48559,
+      "quantity": 1,
+      "subtotal": 48559
+    }
+  ],
+  "total": 48559,
+  "notes": "",
+  "date": "2025-05-24T18:51:52.075Z",
+  "status": "completed",
+  "id": "tr_1748112712098",
+  "userId": "admin",
+  "filename": "invoice_zakyulum_1748112712098"
+}
