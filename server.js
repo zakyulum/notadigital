@@ -1,15 +1,22 @@
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const app = express();
-const PORT = 3002;
+const { v4: uuidv4 } = require('uuid');
+const XLSX = require('xlsx');
 
-// JWT secret key - in production, use environment variable
-const JWT_SECRET = 'your-secret-key-here'; // Change this to a secure random string in production
+const app = express();
+
+// Gunakan environment variable PORT yang disediakan oleh platform hosting, fallback ke 3002 secara lokal
+const PORT = process.env.PORT || 3002;
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkey'; // Ganti ini dengan key yang lebih aman di produksi
+
+// Direktori penyimpanan data per pengguna
+const userDataDir = path.join(__dirname, 'data');
+const userProductsDir = path.join(__dirname, 'products');
+const userSettingsDir = path.join(__dirname, 'settings');
+const userInvoiceDir = path.join(__dirname, 'invoice');
 
 // Serve static files
 app.use(express.static(path.join(__dirname)));
@@ -2173,7 +2180,7 @@ app.get('/invoice/:userId/:invoiceId', async (req, res) => {
                             <div>
                                 <span style='font-size:11px;color:#666;'>Waktu:</span><br>
                                 <span style='font-weight:500;'>${new Date(invoice.date).toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'})}</span>
-                    </div>
+                            </div>
                             <div style="text-align: right;">
                                 <span style='font-size:11px;color:#666;'>Telp:</span><br>
                                 <span style='font-weight:500;'>${invoice.customerPhone}</span>
