@@ -7,7 +7,8 @@ const STORAGE_KEYS = {
 };
 
 // API Base URL
-const API_BASE_URL = 'http://localhost:3002';
+// Ganti URL base API berdasarkan environment
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3002' : window.location.origin;
 
 // Authentication State
 let isLoggedIn = false;

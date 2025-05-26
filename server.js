@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const XLSX = require('xlsx');
+const cors = require('cors'); // Import cors middleware
 
 const app = express();
 
